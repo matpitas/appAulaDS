@@ -7,10 +7,12 @@
         $sql = "SELECT idcategoria, nome FROM categorias WHERE ativo = 'S' ";
         $resultado = mysqli_query($conexao, $sql);
 
+        $dadosCategoria = array();
+
         if($resultado && mysqli_num_rows($resultado) > 0){
 
             while($linha = mysqli_fetch_assoc($resultado)){
-                $dadosCategoria = array_map('utf8_encode', $linha);
+                $dadosCategoria[] = array_map('utf8_encode', $linha);
             }
 
             $dados = array("tipo" =>"success","mensagem" => "","dados" => $dadosCategoria);
