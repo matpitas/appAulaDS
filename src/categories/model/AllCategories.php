@@ -4,11 +4,7 @@
 
     if($conexao){
 
-        $requestData = $_REQUEST;
-
-        $id = isset($requestData['idcategoria']) ? $requestData['idcategoria'] : '';
-
-        $sql = "SELECT idcategoria, nome, ativo, DATE_FORMAT(datacriacao,'%d/%m/%Y %H:%i:%s') as datacriacao, DATE_FORMAT(datamodificacao, '%d/%m/%Y %H:%i:%s') as datamodificacao FROM categorias WHERE idcategoria = $id ";
+        $sql = "SELECT idcategoria, nome FROM categorias WHERE ativo = 'S' ";
         $resultado = mysqli_query($conexao, $sql);
 
         if($resultado && mysqli_num_rows($resultado) > 0){
